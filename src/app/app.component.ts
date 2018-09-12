@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'temp';
+  rows = [];
+
+  constructor() {
+    this.fetch((data) => {
+      this.rows = data;
+    });
+  }
+
+  fetch(cb) {
+    const req = new XMLHttpRequest();
+    req.open('GET', `assets/data/company.json`);
+
+    req.onload = () => {
+      cb(JSON.parse(req.response));
+    };
+
+    req.send();
+  }
 }
