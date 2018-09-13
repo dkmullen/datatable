@@ -19,7 +19,7 @@ export class AppComponent {
 
   fetch(cb) {
     const req = new XMLHttpRequest();
-    req.open('GET', `assets/data/company.json`);
+    req.open('GET', `../../node_modules/@swimlane/ngx-datatable/assets/data/company.json`);
 
     req.onload = () => {
       cb(JSON.parse(req.response));
